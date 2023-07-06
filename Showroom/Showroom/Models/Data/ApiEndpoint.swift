@@ -26,6 +26,10 @@ struct ApiEndpoint{
         "\(apiPath)/login";
     }
     
+    func productDetailEndpoint(id : Int) -> String{
+        return "https://raw.githubusercontent.com/nandanurseptama/Showroom_Projects/master/assets/jsons/product_\(id).json";
+    }
+    
     var getAllProductsEndpoint : String{
         "https://raw.githubusercontent.com/nandanurseptama/Showroom_Projects/master/assets/jsons/fetch_all_products.json";
     }

@@ -9,7 +9,13 @@ import SwiftUI
 
 struct HomeScreen: View {
     
+    
     @StateObject private var productsFeed : ProductsFeed = ProductsFeed()
+    @EnvironmentObject private var navigationManager : NavigationManager;
+    
+    @State var isFirstAppear : Bool = false;
+    @State private var linkActive = false
+    @State private var selectedProductId : Int?;
     
     private var bounds = UIScreen.main.bounds
     
@@ -19,36 +25,77 @@ struct HomeScreen: View {
             GridItem(.flexible(minimum: 0, maximum: (bounds.width - 40) / 2),spacing: 16)
         ];
     }
-    @ViewBuilder var builder : some View{
-        if productsFeed.fetchProductsState == FetchProductsState.Loaded{
-            productsList
-        } else if productsFeed.fetchProductsState == FetchProductsState.Empty{
-            Text("Products was empty")
-        } else if productsFeed.fetchProductsState == FetchProductsState.Error{
-            if let e = productsFeed.fetchProductsErrorMessage {
-                Text(e)
-            } else{
-                Text("Internal Error")
+    var builder : some View{
+        Group{
+            if productsFeed.fetchProductsState == FetchProductsState.Loaded{
+                productsList
+            } else if productsFeed.fetchProductsState == FetchProductsState.Empty{
+                Text("Products was empty")
+            } else if productsFeed.fetchProductsState == FetchProductsState.Error{
+                if let e = productsFeed.fetchProductsErrorMessage {
+                    Text(e)
+                } else{
+                      Text("Internal Error")
+                }
             }
-        }
-        else{
-            Text("Loading")
+            else{
+                Text("Loading")
+            }
         }
     }
     var body: some View {
         builder.task{
-            productsFeed.load()
+            if !isFirstAppear{
+                self.productsFeed.load()
+                isFirstAppear = true;
+            }
         }
+        .onChange(of: self.navigationManager.activeTabIndex){newValue in
+            linkActive = false;
+            print("dismiss navigation");
+        }
+        
+    }
+    func selectedProductIdIsNull()->Bool{
+        if let _ = self.selectedProductId{
+            return false;
+        }
+        return true;
     }
     
     var productsList : some View{
-        ScrollView{
-            LazyVGrid(columns: gridItemLayout, alignment: .leading, spacing: 16){
-                ForEach(productsFeed.products, id: \.self.id){
-                    item in
-                    ProductItem(imageUrl : item.thumbnail, productName: item.name)
+        let isNavigationActive = Binding<Bool>(
+            get: { self.linkActive && !self.selectedProductIdIsNull() },
+            set: {
+                print("\($0)")
+            }
+        )
+        return NavigationStack{
+            ScrollView{
+                LazyVGrid(columns: gridItemLayout, alignment: .leading, spacing: 16){
+                    ForEach(productsFeed.products, id: \.self.id){
+                        item in
+                        ProductItem(productData: item)
+                            .onTapGesture {
+                                linkActive = true;
+                                selectedProductId = item.id;
+                                print("linkActive \(linkActive)")
+                                print("finish tap")
+                        }
+                        
+                    }
+                }.padding(.all, 16)
+            }.navigationDestination(isPresented: isNavigationActive){
+                if let productId = selectedProductId{
+                    ProductScreen(productId: productId).onDisappear(){
+                        linkActive = false;
+                        selectedProductId = nil
+                    }
                 }
-            }.padding(.all, 16)
+                else{
+                   EmptyView()
+                }
+            }
         }
     }
 }

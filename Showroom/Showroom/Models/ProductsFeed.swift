@@ -38,20 +38,32 @@ class ProductsFeed : ObservableObject{
                 do{
                     let decodeTasks = try decoder.decode([ProductData].self, from: data)
                     if decodeTasks.isEmpty{
-                        self.fetchProductsState = FetchProductsState.Empty;
-                        self.fetchProductsErrorMessage = nil
+                        DispatchQueue.main.async {
+                            self.fetchProductsState = FetchProductsState.Empty;
+                            self.fetchProductsErrorMessage = nil
+                        }
                         return;
                     } else{
-                        self.fetchProductsState = FetchProductsState.Loaded;
-                        self.fetchProductsErrorMessage = nil;
-                        self.products = decodeTasks;
+                        DispatchQueue.main.async {
+                            self.fetchProductsState = FetchProductsState.Loaded;
+                            self.fetchProductsErrorMessage = nil;
+                            self.products = decodeTasks;
+                        }
                         return;
                     }
                 } catch{
-                    self.fetchProductsState = FetchProductsState.Error
-                    self.fetchProductsErrorMessage = "Internal Error";
+                    DispatchQueue.main.async {
+                        self.fetchProductsState = FetchProductsState.Error
+                        self.fetchProductsErrorMessage = "Internal Error";
+                    }
                     return;
                 }
+            } else{
+                DispatchQueue.main.async {
+                    self.fetchProductsState = FetchProductsState.Error;
+                    self.fetchProductsErrorMessage = "Internal error"
+                }
+                return;
             }
         }
         task.resume()

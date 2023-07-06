@@ -24,6 +24,7 @@
 		2631EC502A552EFC00B02CAC /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2631EC4F2A552EFC00B02CAC /* LoginScreen.swift */; };
 		2631EC522A5530E100B02CAC /* RegisterScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2631EC512A5530E100B02CAC /* RegisterScreen.swift */; };
 		26AD32BF2A55A5F100FA576B /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AD32BE2A55A5F100FA576B /* HomeScreen.swift */; };
+		26E4A97B2A56691500B3F45F /* ProductDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E4A97A2A56691500B3F45F /* ProductDetail.swift */; };
 		26FDEFEA2A5651D500817473 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FDEFE92A5651D500817473 /* Product.swift */; };
 		26FDEFEC2A56525E00817473 /* ProductsFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FDEFEB2A56525E00817473 /* ProductsFeed.swift */; };
 		26FDEFEF2A56576700817473 /* RemoteImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FDEFEE2A56576700817473 /* RemoteImageView.swift */; };
@@ -69,6 +70,7 @@
 		2631EC4F2A552EFC00B02CAC /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		2631EC512A5530E100B02CAC /* RegisterScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterScreen.swift; sourceTree = "<group>"; };
 		26AD32BE2A55A5F100FA576B /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
+		26E4A97A2A56691500B3F45F /* ProductDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetail.swift; sourceTree = "<group>"; };
 		26FDEFE92A5651D500817473 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		26FDEFEB2A56525E00817473 /* ProductsFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsFeed.swift; sourceTree = "<group>"; };
 		26FDEFEE2A56576700817473 /* RemoteImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImageView.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				261A7D4F2A555749009BC749 /* Data */,
 				261A7D542A555A0C009BC749 /* Account.swift */,
 				26FDEFEB2A56525E00817473 /* ProductsFeed.swift */,
+				26E4A97A2A56691500B3F45F /* ProductDetail.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -357,6 +360,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26E4A97B2A56691500B3F45F /* ProductDetail.swift in Sources */,
 				262DB1432A56452900DE9456 /* NavView.swift in Sources */,
 				26059A3E2A5567C700122E0A /* SplashScreen.swift in Sources */,
 				261A7D512A55575B009BC749 /* Auth.swift in Sources */,

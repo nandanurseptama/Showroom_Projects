@@ -16,12 +16,13 @@ struct ShowroomApp: App {
         WindowGroup{
             NavigationView{
                 if let _ = currentAccount.current.auth {
-                    SplashScreen()
+                    NavView()
                 } else{
                     LoginScreen().environmentObject(currentAccount)
                 }
                 
             }.task {
+                print("authTask")
                 currentAccount.auth()
             }
         }

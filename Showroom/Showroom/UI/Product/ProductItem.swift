@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct ProductItem: View {
-    var imageUrl : String;
-    var productName : String;
-    
+    var productData : ProductData
+    init(productData: ProductData) {
+        self.productData = productData
+    }
     var body: some View {
         VStack(alignment: .leading){
             RemoteImageView(
-                url: URL(string:imageUrl)!,
+                url: URL(string:productData.thumbnail)!,
                 placeholder: {
                     Text("Loading")
                 },
@@ -25,23 +26,10 @@ struct ProductItem: View {
                         .clipShape(RoundedRectangle(cornerRadius: 8))
                 }
             )
-            Text(productName)
+            Text(productData.name)
                 .fontWeight(.bold)
                 .font(.system(size: 18))
-            Button{
-                print("");
-            } label: {
-                Text("View more")
-                    .foregroundColor(.white)
-                    .frame(maxWidth: .infinity)
-                    .frame(maxHeight: 40)
-            }
-            .frame(maxHeight: 40)
-            .frame(maxWidth:.infinity)
-            .background{
-                Color(.systemBlue)
-            }
-            .cornerRadius(8)
+                .foregroundColor(.black)
         }
         .padding(.all, 16)
         .overlay{
