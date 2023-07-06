@@ -1,0 +1,14 @@
+{
+  "id": 1,
+  "name": "Honda CB150R",
+  "price": 37283000,
+  "priceString": "37,283,000",
+  "priceCurrency": "Rp",
+  "thumbnail": "https://raw.githubusercontent.com/nandanurseptama/Showroom_Projects/master/assets/images/honda_cb150r/honda_cb150r_1.png?raw=true",
+  "thumbnails" : [
+    "https://raw.githubusercontent.com/nandanurseptama/Showroom_Projects/master/assets/images/honda_cb150r/honda_cb150r_1.png?raw=true",
+    "https://raw.githubusercontent.com/nandanurseptama/Showroom_Projects/master/assets/images/honda_cb150r/honda_cb150r_2.png?raw=true",
+    "https://raw.githubusercontent.com/nandanurseptama/Showroom_Projects/master/assets/images/honda_cb150r/honda_cb150r_3.png?raw=true"
+  ],
+  "description" : "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto."
+}

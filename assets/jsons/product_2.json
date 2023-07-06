@@ -1,0 +1,12 @@
+{
+  "id": 2,
+  "name": "NINJA ZX-25R",
+  "price": 107540000,
+  "priceString": "107,540,000",
+  "priceCurrency": "Rp",
+  "thumbnail": "https://raw.githubusercontent.com/nandanurseptama/Showroom_Projects/master/assets/images/ninja_zx25r/ninja_zx25r_1.png?raw=true",
+  "thumbnails": [
+    "https://raw.githubusercontent.com/nandanurseptama/Showroom_Projects/master/assets/images/ninja_zx25r/ninja_zx25r_1.png?raw=true"
+  ],
+  "description": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto."
+}

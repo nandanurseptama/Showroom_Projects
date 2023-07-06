@@ -8,44 +8,51 @@
 import SwiftUI
 
 struct ProductItem: View {
-    var imagePath : String;
+    var imageUrl : String;
     var productName : String;
     
     var body: some View {
-        ZStack{
-            RoundedRectangle(cornerRadius: 16)
-                .stroke(.gray, lineWidth: 0.9)
-                .shadow(radius: 1)
-            VStack(alignment: .leading) {
-                Image(imagePath)
-                    .resizable()
-                    .aspectRatio(1, contentMode: .fit)
-                Text(productName)
-                    .fontWeight(.bold)
-                    .font(.system(size: 18))
-                Button{
-                    print("");
-                } label: {
-                    Text("View more")
-                        .foregroundColor(.white)
-                        .frame(maxWidth: .infinity)
-                        .frame(maxHeight: 40)
+        VStack(alignment: .leading){
+            RemoteImageView(
+                url: URL(string:imageUrl)!,
+                placeholder: {
+                    Text("Loading")
+                },
+                image: {
+                    $0
+                        .resizable()
+                        .aspectRatio(1, contentMode: .fill)
+                        .clipShape(RoundedRectangle(cornerRadius: 8))
                 }
-                .frame(maxHeight: 40)
-                .frame(maxWidth:.infinity)
-                .background{
-                    Color(.systemBlue)
-                }
-                .cornerRadius(8)
-                .padding(.bottom, 8)
+            )
+            Text(productName)
+                .fontWeight(.bold)
+                .font(.system(size: 18))
+            Button{
+                print("");
+            } label: {
+                Text("View more")
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity)
+                    .frame(maxHeight: 40)
             }
-            .padding(.all, 8)
+            .frame(maxHeight: 40)
+            .frame(maxWidth:.infinity)
+            .background{
+                Color(.systemBlue)
+            }
+            .cornerRadius(8)
+        }
+        .padding(.all, 16)
+        .overlay{
+            RoundedRectangle(cornerRadius: 8)
+                .stroke(.gray, lineWidth: 0.9)
         }
     }
 }
 
-struct ProductItem_Previews: PreviewProvider {
-    static var previews: some View {
-        ProductItem(imagePath: "honda_cb150r_1", productName: "Honda CB150R")
-    }
-}
+//struct ProductItem_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ProductItem(imageUrl: "https://raw.githubusercontent.com/nandanurseptama/Showroom_Projects/master/assets/images/honda_cb150r/honda_cb150r_1.png", productName: "Honda CB150R")
+//    }
+//}

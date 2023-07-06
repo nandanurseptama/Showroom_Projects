@@ -26,4 +26,8 @@ struct ApiEndpoint{
         "\(apiPath)/login";
     }
     
+    var getAllProductsEndpoint : String{
+        "https://raw.githubusercontent.com/nandanurseptama/Showroom_Projects/master/assets/jsons/fetch_all_products.json";
+    }
+    
 }
