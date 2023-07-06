@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "name": "Honda CB150R",
+    "price": 37283000,
+    "priceString": "37,283,000",
+    "priceCurrency": "Rp",
+    "thumbnail": "https://raw.githubusercontent.com/nandanurseptama/Showroom_Projects/master/assets/images/honda_cb150r/honda_cb150r_1.png?raw=true"
+  },
+  {
+    "id": 2,
+    "name": "NINJA ZX-25R",
+    "price": 107540000,
+    "priceString": "107,540,000",
+    "priceCurrency": "Rp",
+    "thumbnail": "https://raw.githubusercontent.com/nandanurseptama/Showroom_Projects/master/assets/images/ninja_zx25r/ninja_zx25r_1.png?raw=true"
+  }
+]
