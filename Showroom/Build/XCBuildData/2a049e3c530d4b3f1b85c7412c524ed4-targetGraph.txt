@@ -1,0 +1,6 @@
+Target dependency graph (3 targets)
+Showroom in Showroom, no dependencies
+ShowroomTests in Showroom, depends on:
+Showroom in Showroom (explicit)
+ShowroomUITests in Showroom, depends on:
+Showroom in Showroom (explicit)

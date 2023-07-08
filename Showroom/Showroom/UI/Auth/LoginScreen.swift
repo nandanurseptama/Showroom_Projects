@@ -13,7 +13,7 @@ struct LoginScreen: View {
     @State var email : String = "";
     @State var password : String = "";
     
-    @State private var showAlertError : Bool = false;
+    @State private var loginError : String? = nil;
     
     var body: some View {
             VStack(alignment: .center, spacing: 16){
@@ -40,7 +40,7 @@ struct LoginScreen: View {
                     }
                     .textInputAutocapitalization(.never)
                 Button(
-                    action: onLogin
+                    action : onLogin
                 ){
                     Text("Login")
                         .foregroundColor(.white)
@@ -55,27 +55,46 @@ struct LoginScreen: View {
                 Spacer()
                 HStack{
                     Text("Do not have an account ?")
-                    NavigationLink(destination: RegisterScreen()){
+                    NavigationLink(destination: RegisterScreen().environmentObject(currentAccount)){
                         Text("Register here")
                             .foregroundColor(.blue)
                             .fontWeight(.bold)
                     }
                 }
             }.padding(8)
-            .onChange(of: currentAccount.loginError){ value in
-                print("loginError ? \(String(describing: value))")
-                if let _ = value{
-                    self.showAlertError = true
-                } else{
-                    self.showAlertError = false
-                }
-            }.alert(isPresented: $showAlertError){
+                .alert(isPresented: isAlertShown()){
                 Alert(title: Text("Login Error"), message: Text(currentAccount.loginError!.message), dismissButton: .default(Text("Ok")))
             }
     }
+    
+    func isAlertShown()->Binding<Bool>{
+        return Binding<Bool>(get: {
+            self.loginError != nil
+        }, set: {
+            val in
+            if !val{
+                self.loginError = nil;
+            }
+        });
+    }
     func onLogin(){
-        currentAccount.login(email: email, password: password);
-        return
+        do{
+            try currentAccount.login(email: email, password: password);
+        } catch LoginError.invalidEmail{
+            self.loginError = LoginError.invalidEmail.message;
+        } catch LoginError.emailOrPasswordWrong{
+            self.loginError = LoginError.emailOrPasswordWrong.message;
+        } catch LoginError.emailRequired{
+            self.loginError = LoginError.emailRequired.message;
+        } catch LoginError.passwordRequired{
+            self.loginError = LoginError.passwordRequired.message;
+        } catch LoginError.notfound{
+            self.loginError = LoginError.notfound.message;
+        }
+        catch{
+            self.loginError = "Internal Error";
+        }
+        return;
     }
 }
 

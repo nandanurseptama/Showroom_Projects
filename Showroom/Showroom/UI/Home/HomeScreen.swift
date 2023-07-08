@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct HomeScreen: View {
-    
-    
     @StateObject private var productsFeed : ProductsFeed = ProductsFeed()
+    
     @EnvironmentObject private var navigationManager : NavigationManager;
+    @EnvironmentObject private var shoppingCart : ShoppingCart;
     
     @State var isFirstAppear : Bool = false;
     @State private var linkActive = false
@@ -46,17 +46,16 @@ struct HomeScreen: View {
     var body: some View {
         builder.task{
             if !isFirstAppear{
-                self.productsFeed.load()
+                await self.productsFeed.load()
                 isFirstAppear = true;
             }
         }
         .onChange(of: self.navigationManager.activeTabIndex){newValue in
             linkActive = false;
-            print("dismiss navigation");
         }
         
     }
-    func selectedProductIdIsNull()->Bool{
+    func selectedProductIdIsNull() -> Bool{
         if let _ = self.selectedProductId{
             return false;
         }
@@ -67,7 +66,11 @@ struct HomeScreen: View {
         let isNavigationActive = Binding<Bool>(
             get: { self.linkActive && !self.selectedProductIdIsNull() },
             set: {
-                print("\($0)")
+                val in
+                if !val{
+                        linkActive = false;
+                        selectedProductId = nil
+                }
             }
         )
         return NavigationStack{
@@ -87,10 +90,7 @@ struct HomeScreen: View {
                 }.padding(.all, 16)
             }.navigationDestination(isPresented: isNavigationActive){
                 if let productId = selectedProductId{
-                    ProductScreen(productId: productId).onDisappear(){
-                        linkActive = false;
-                        selectedProductId = nil
-                    }
+                    ProductScreen(productId: productId)
                 }
                 else{
                    EmptyView()

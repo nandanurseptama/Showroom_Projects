@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 enum FetchProductDetailState{
     case Loading;
     case NotFound;
@@ -41,13 +42,14 @@ class ProductDetail : ObservableObject{
             data, response, error in
             DispatchQueue.main.sync {
                 let decoder = JSONDecoder()
-                
+                print("Response Type \(type(of:response))");
                 if let data = data {
                     do{
                         let decodeTask = try decoder.decode(ProductDetailData.self, from: data)
                         self.productDetailData = decodeTask
                         self.fetchProductDetailState = FetchProductDetailState.Loaded
                         self.productDetailErrorMessage = nil;
+            
                         return;
                     } catch{
                         self.fetchProductDetailState = FetchProductDetailState.Error

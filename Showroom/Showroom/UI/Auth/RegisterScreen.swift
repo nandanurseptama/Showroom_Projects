@@ -10,7 +10,12 @@ import SwiftUI
 struct RegisterScreen: View {
     @State var email : String = "";
     @State var password : String = "";
+    
     @Environment(\.presentationMode) var presentationMode
+    
+    @EnvironmentObject private var currentAccount : CurrentAccount;
+    
+    @State private var registerError : String? = nil;
 
     var body: some View {
         VStack(alignment: .center, spacing:16){
@@ -36,12 +41,15 @@ struct RegisterScreen: View {
                     .frame(minHeight: 44)
             }
             .textInputAutocapitalization(.never)
+            registerErrorView
             Button{
-                print("Login button pressed")
+                register();
             } label: {
-                Text("Login")
+                Text("Register")
                     .foregroundColor(.white)
                     .fontWeight(.bold)
+                    .frame(height: 44)
+                    .frame(maxWidth: .infinity)
             }
             .frame(height: 44)
             .frame(maxWidth: .infinity)
@@ -60,6 +68,32 @@ struct RegisterScreen: View {
                 
             }
         }.padding(8)
+    }
+    
+    @ViewBuilder var registerErrorView : some View{
+        if let registerError = self.registerError{
+            HStack{
+                Text(registerError)
+                    .foregroundColor(.red)
+                    .fontWeight(.bold)
+            }
+        } else{
+            EmptyView()
+        }
+    }
+    
+    
+    // Tasks
+    func register(){
+        do{
+            try currentAccount.register(email: self.email, password: self.password);
+        } catch RegisterError.EmailAlreadyUsed{
+            self.registerError = "Email already used";
+        } catch RegisterError.InvalidEmail{
+            self.registerError = "Invalid email";
+        } catch{
+            self.registerError = nil;
+        }
     }
 }
 

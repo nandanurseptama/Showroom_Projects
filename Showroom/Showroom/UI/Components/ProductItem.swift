@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct ProductItem: View {
-    var productData : ProductData
+    var productData : ProductData;
+    
     init(productData: ProductData) {
         self.productData = productData
     }

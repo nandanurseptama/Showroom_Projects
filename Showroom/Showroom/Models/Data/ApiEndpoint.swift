@@ -6,7 +6,14 @@
 //
 
 import Foundation
-
+enum ApiError : Error{
+    case NotFound;
+    case InternalServerError;
+    case BadGateway;
+    case BadRequest;
+    case UnknownError;
+    case ParseDataError;
+}
 struct ApiEndpoint{
     
     static var shared : ApiEndpoint = ApiEndpoint();

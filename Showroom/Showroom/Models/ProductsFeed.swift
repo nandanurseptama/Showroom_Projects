@@ -21,7 +21,7 @@ class ProductsFeed : ObservableObject{
     @Published var products : [ProductData] = [];
     
     // Tasks
-    func load(){
+    func load()async{
         self.fetchProductsState = FetchProductsState.Loading;
         self.fetchProductsErrorMessage = nil;
         
@@ -38,31 +38,23 @@ class ProductsFeed : ObservableObject{
                 do{
                     let decodeTasks = try decoder.decode([ProductData].self, from: data)
                     if decodeTasks.isEmpty{
-                        DispatchQueue.main.async {
-                            self.fetchProductsState = FetchProductsState.Empty;
-                            self.fetchProductsErrorMessage = nil
-                        }
+                        self.fetchProductsState = FetchProductsState.Empty;
+                        self.fetchProductsErrorMessage = nil
                         return;
                     } else{
-                        DispatchQueue.main.async {
-                            self.fetchProductsState = FetchProductsState.Loaded;
-                            self.fetchProductsErrorMessage = nil;
-                            self.products = decodeTasks;
-                        }
+                        self.fetchProductsState = FetchProductsState.Loaded;
+                        self.fetchProductsErrorMessage = nil;
+                        self.products = decodeTasks;
                         return;
                     }
                 } catch{
-                    DispatchQueue.main.async {
-                        self.fetchProductsState = FetchProductsState.Error
-                        self.fetchProductsErrorMessage = "Internal Error";
-                    }
+                    self.fetchProductsState = FetchProductsState.Error
+                    self.fetchProductsErrorMessage = "Internal Error";
                     return;
                 }
             } else{
-                DispatchQueue.main.async {
-                    self.fetchProductsState = FetchProductsState.Error;
-                    self.fetchProductsErrorMessage = "Internal error"
-                }
+                self.fetchProductsState = FetchProductsState.Error;
+                self.fetchProductsErrorMessage = "Internal error"
                 return;
             }
         }
