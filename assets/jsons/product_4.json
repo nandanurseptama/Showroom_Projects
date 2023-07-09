@@ -4,11 +4,11 @@
   "price": 314000000,
   "priceString": "314,000,000",
   "priceCurrency": "Rp",
-  "thumbnail": "https://content2.kawasaki.com/ContentStorage/KMI/ProductTrimGroup/2038/0999fd21-8639-45a6-86ba-462ee2019e3d.jpg?w=750",
+  "thumbnail": "https://content2.kawasaki.com/ContentStorage/KMI/ProductTrimGroup/2038/0999fd21-8639-45a6-86ba-462ee2019e3d.jpg?w=300",
   "thumbnails": [
-    "https://content2.kawasaki.com/ContentStorage/KMI/ProductTrimGroup/2038/0999fd21-8639-45a6-86ba-462ee2019e3d.jpg?w=750",
-    "https://content2.kawasaki.com/ContentStorage/KMI/Products/5043/affa7e09-034d-4d62-af5d-83d1d0fbc064.jpg?w=640",
-    "https://content2.kawasaki.com/ContentStorage/KMI/Products/4980/eff12c76-7c34-4be9-af7a-c70bfa064e9a.jpg?w=640"
+    "https://content2.kawasaki.com/ContentStorage/KMI/ProductTrimGroup/2038/0999fd21-8639-45a6-86ba-462ee2019e3d.jpg?w=300",
+    "https://content2.kawasaki.com/ContentStorage/KMI/Products/5043/affa7e09-034d-4d62-af5d-83d1d0fbc064.jpg?w=300",
+    "https://content2.kawasaki.com/ContentStorage/KMI/Products/4980/eff12c76-7c34-4be9-af7a-c70bfa064e9a.jpg?w=300"
   ],
   "description": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto."
 }

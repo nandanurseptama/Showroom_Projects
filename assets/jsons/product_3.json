@@ -1,15 +1,14 @@
 {
-    "id": 3,
-    "name": "Kawasaki W175 Cafe",
-    "price": 35900000,
-    "priceString": "35,900,000",
-    "priceCurrency": "Rp",
-    "thumbnail": "https://content2.kawasaki.com/ContentStorage/KMI/Products/5020/08cf4756-18da-47ce-86de-35ee9b096a3c.jpg",
-    "thumbnails" : [
-        "https://content2.kawasaki.com/ContentStorage/KMI/Products/5020/08cf4756-18da-47ce-86de-35ee9b096a3c.jpg",
-        "https://content2.kawasaki.com/ContentStorage/KMI/ProductTopFeature/1046/06f6d952-1556-4805-98f3-8a732d54261e.jpg?w=600",
-        "https://content2.kawasaki.com/ContentStorage/KMI/ProductTopFeature/1046/84dbb094-a0ac-4627-b23a-8fbd73e0270a.jpg?w=600"
-    ],
-    "description" : "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto."
-  }
-  
+  "id": 3,
+  "name": "Kawasaki W175 Cafe",
+  "price": 35900000,
+  "priceString": "35,900,000",
+  "priceCurrency": "Rp",
+  "thumbnail": "https://content2.kawasaki.com/ContentStorage/KMI/Products/5020/08cf4756-18da-47ce-86de-35ee9b096a3c.jpg",
+  "thumbnails": [
+    "https://content2.kawasaki.com/ContentStorage/KMI/Products/5020/08cf4756-18da-47ce-86de-35ee9b096a3c.jpg",
+    "https://content2.kawasaki.com/ContentStorage/KMI/ProductTopFeature/1046/06f6d952-1556-4805-98f3-8a732d54261e.jpg?w=300",
+    "https://content2.kawasaki.com/ContentStorage/KMI/ProductTopFeature/1046/84dbb094-a0ac-4627-b23a-8fbd73e0270a.jpg?w=300"
+  ],
+  "description": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto."
+}
