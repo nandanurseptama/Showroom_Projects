@@ -43,7 +43,6 @@ enum RegisterError : Error{
 
 struct Account{
     var auth : Credentials?;
-    var profile : ProfileData?;
 }
 
 class CurrentAccount : ObservableObject{
@@ -51,9 +50,6 @@ class CurrentAccount : ObservableObject{
     init() {
         self.current = Account()
     }
-    
-    
-    
     
     private var localStorage  = UserDefaults.standard
     
@@ -190,6 +186,7 @@ class CurrentAccount : ObservableObject{
     }
     func logout(){
         localStorage.set(nil, forKey: "authedUser");
+        self.current.auth = nil;
         return;
     }
 }

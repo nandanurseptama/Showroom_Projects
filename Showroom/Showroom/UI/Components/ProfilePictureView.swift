@@ -66,6 +66,7 @@ struct ProfilePictureView: View {
             Image(uiImage: uiImage)
                 .resizable()
                 .frame(width: CGFloat(size), height: CGFloat(size))
+                .clipShape(Circle())
         );
        
     }

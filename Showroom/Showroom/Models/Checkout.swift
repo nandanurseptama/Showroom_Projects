@@ -27,13 +27,15 @@ class Checkout : ObservableObject{
     
     let localStorage = UserDefaults.standard;
     
-    let orderCanCancelBeforeDays = 3; // 3 days after order
-    
     static var orderItemExample : OrderItem{
         OrderItem(id: 1, items: [ShoppingCart.example], address: "Japan", orderTime: Date.now.millisecondsSince1970)
     }
+    
+    // time limit to cancel order after checkout
+    //
+    // after 5 minutes order cannot be canceled
     var cancelOrderLimitInMilliseconds : Int64 {
-        300000;//3 *  24 * 3600 * 1000;
+        300000; // equal to 5 minutes
     }
     // Tasks
     func createOrder(cartItems : [CartItem], address : String)->Void{
@@ -160,14 +162,14 @@ class Checkout : ObservableObject{
         self.items.forEach({
             item in
             let dateString = Date.init(fromMillisecondsSince1970: item.orderTime).formatToString(withFormat: "yyyy-MM-dd")
-            guard var datasOnDay = datas[dateString] else {
-                var totals = item.items.reduce(0, {
+            guard let datasOnDay = datas[dateString] else {
+                let totals = item.items.reduce(0, {
                     $0 + $1.amountItem
                 })
                 datas[dateString] = totals;
                 return;
             }
-            var totals = item.items.reduce(0, {
+            let totals = item.items.reduce(0, {
                 $0 + $1.amountItem
             })
             datas[dateString] = datasOnDay + totals;

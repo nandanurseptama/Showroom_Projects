@@ -19,8 +19,27 @@ struct ProfileScreen: View {
     
     @State private var alertUpdateProfileMessage : String? = nil;
     
-    
-    var body: some View {
+    var body : some View {
+        AnyView(builder)
+            .task{
+                loadProfile();
+        }
+    }
+    @ViewBuilder var builder  : some View{
+        if self.profile.profileFetchState == ProfileFetchState.Loading || self.profile.profileFetchState == ProfileFetchState.Initial{
+            Text("Loading Profile")
+        } else if self.profile.profileFetchState == ProfileFetchState.Loaded{
+            mainBody
+        } else{
+            VStack{
+                Text("Internal Error")
+                Button("Reload", action: {
+                    loadProfile();
+                })
+            }
+        }
+    }
+    var mainBody: some View {
         VStack(alignment:.leading){
             ScrollView{
                 VStack(alignment:.leading){
@@ -37,7 +56,7 @@ struct ProfileScreen: View {
             Button(
                 role : .destructive,
                 action: {
-                    print("Logout")
+                    self.currentAccount.logout();
                 },
                 label: {
                     Text("Logout")
@@ -67,9 +86,6 @@ struct ProfileScreen: View {
                 message: Text("\(self.alertUpdateProfileMessage ?? "")"),
                 dismissButton: .default(Text("OK"))
             )
-        }
-        .task{
-            loadProfile();
         }
         .onChange(of: self.profilePicturePathController, perform: {
             val in
