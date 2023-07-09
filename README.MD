@@ -15,6 +15,13 @@ For showing products at home/product detail, it will get jsons file that hosted 
 - <a href="https://github.com/nandanurseptama/Showroom_Projects/blob/master/assets/jsons/fetch_all_products.json?raw=true">Fetch All Product JSON</a>
 - <a href="https://github.com/nandanurseptama/Showroom_Projects/blob/master/assets/jsons/product_1.json?raw=true">Single Product Example JSON</a>
 
+This project used MV pattern, inspired by <a href="https://azamsharp.com/2022/10/06/practical-mv-pattern-crud.html">this article</a>, since i usually used Flutter and rarely used SwiftUI for building Mobile App (Android or IOS), so i need to adapt the Swift syntax. This is first time i build IOS app with Swift. Usually i used swift for implementing method channel or event stream in Flutter.
+
+Why i choose MV pattern ? because its simple, no need large boiler plate like (MVVM, SOLID or VIPER). I dont dislike those pattern. But this MV pattern brings me new insight. Thanks for this assignment, cause for this task i do some reseearch and found MV pattern article. 
+
+# Running Project
+
+- Open 'Showroom' folder with XCode and run.
 
 ## Screenshoots
 
