@@ -14,5 +14,22 @@
     "priceString": "107,540,000",
     "priceCurrency": "Rp",
     "thumbnail": "https://raw.githubusercontent.com/nandanurseptama/Showroom_Projects/master/assets/images/ninja_zx25r/ninja_zx25r_1.png?raw=true"
+  },
+  {
+    "id": 3,
+    "name": "Kawasaki W175 Cafe",
+    "price": 35900000,
+    "priceString": "35,900,000",
+    "priceCurrency": "Rp",
+    "thumbnail": "https://content2.kawasaki.com/ContentStorage/KMI/Products/5020/08cf4756-18da-47ce-86de-35ee9b096a3c.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Kawasaki W800 Cafe",
+    "price": 314000000,
+    "priceString": "314,000,000",
+    "priceCurrency": "Rp",
+    "thumbnail": "https://content2.kawasaki.com/ContentStorage/KMI/ProductTrimGroup/2038/0999fd21-8639-45a6-86ba-462ee2019e3d.jpg?w=750"
   }
+  
 ]
